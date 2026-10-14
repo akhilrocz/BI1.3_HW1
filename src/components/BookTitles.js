@@ -3,7 +3,7 @@ import useFetch from "../useFetch";
 
 const BookTitles = () => {
   const [successMessage, setSuccessMessage] = useState("");
-  const { data, loading, error } = useFetch("https://be4-assignment1.vercel.app/books");
+  const { data } = useFetch("https://be4-assignment1.vercel.app/books");
 
   // console.log(data);
 
@@ -14,7 +14,7 @@ const BookTitles = () => {
       });
 
       if (!response.ok) {
-        throw "Failed to delete book.";
+        throw new Error("Failed to delete book.");
       }
 
       const data = await response.json();
@@ -24,11 +24,11 @@ const BookTitles = () => {
         window.location.reload();
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error deleting book:", error);
     }
   };
   return (
-    <div>
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
       <h1>All Books</h1>
       <ul>
         {data?.map((movie) => (

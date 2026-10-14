@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 const AddBookForm = () => {
   const [formData, setFormData] = useState({
@@ -33,22 +33,23 @@ const AddBookForm = () => {
         body: JSON.stringify(formData),
       });
       if (!response.ok) {
-        throw "Failed to add book.";
+        throw new Error("Failed to add book.");
       }
       const data = await response.json();
       console.log("Added Book", data);
     } catch (error) {
-      console.log(error);
+      console.error("Error adding book:", error);
     }
   };
 
   return (
-    <div>
+    <div style={{display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column"}}>
       <h2>Add New Book</h2>
-      <form onSubmit={handleSubmit}>
+      <form style={{width:"100%", maxWidth:"500px"}} onSubmit={handleSubmit}>
         <label>Title: </label>
         <br />
         <input
+         style={{ width: "100%", boxSizing: "border-box" }}
           type="text"
           name="title"
           value={formData.title}
@@ -60,6 +61,7 @@ const AddBookForm = () => {
         <label>Author: </label>
         <br />
         <input
+         style={{ width: "100%", boxSizing: "border-box" }}
           type="text"
           name="author"
           value={formData.author}
@@ -71,6 +73,7 @@ const AddBookForm = () => {
         <label>Published Year: </label>
         <br />
         <input
+         style={{ width: "100%", boxSizing: "border-box" }}
           type="number"
           name="publishedYear"
           value={formData.publishedYear}
@@ -82,6 +85,7 @@ const AddBookForm = () => {
         <label>Genre: </label>
         <br />
         <input
+         style={{ width: "100%", boxSizing: "border-box" }}
           type="text"
           name="genre"
           value={formData.genre}
@@ -93,6 +97,7 @@ const AddBookForm = () => {
         <label>Language: </label>
         <br />
         <input
+         style={{ width: "100%", boxSizing: "border-box" }}
           type="text"
           name="language"
           value={formData.language}
@@ -104,6 +109,7 @@ const AddBookForm = () => {
         <label>Country: </label>
         <br />
         <input
+         style={{ width: "100%", boxSizing: "border-box" }}
           type="text"
           name="country"
           value={formData.country}
@@ -115,6 +121,7 @@ const AddBookForm = () => {
         <label>Rating: </label>
         <br />
         <input
+         style={{ width: "100%", boxSizing: "border-box" }}
           type="number"
           name="rating"
           value={formData.rating}
@@ -126,6 +133,7 @@ const AddBookForm = () => {
         <label>Summary: </label>
         <br />
         <input
+         style={{ width: "100%", boxSizing: "border-box" }}
           type="text"
           name="summary"
           value={formData.summary}
@@ -137,6 +145,7 @@ const AddBookForm = () => {
         <label>Cover Image URL: </label>
         <br />
         <input
+         style={{ width: "100%", boxSizing: "border-box" }}
           type="text"
           name="coverImageUrl"
           value={formData.coverImageUrl}

@@ -1,7 +1,7 @@
 import useFetch from "../useFetch";
 
 const BooksByHarperLee = ({ author }) => {
-  const { data, loading, error } = useFetch(
+  const { data, loading } = useFetch(
     `https://be4-assignment1.vercel.app/books/author/${author}`
   );
 
@@ -15,7 +15,7 @@ const BooksByHarperLee = ({ author }) => {
       </ul>
     </div>
   ) : (
-    loading && <p>Loading...</p>
+    loading && <p style={{ textAlign: "center" }}>Loading...</p>
   );
 };
 
